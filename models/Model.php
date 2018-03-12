@@ -144,10 +144,10 @@ class Model
     	$sql = "DELETE FROM {table} WHERE id = :id";
     	try{
 	    $this->ExecuteCommand($sql, [':id'=>$id]);
+	    $results = true;
 	    throw new Excepetion('Erro no delete!');
-	    return true;
 	} catch (Exception $e) {
-	    return $e->getMessage();
+	    $results = $e->getMessage();
 	}	
     	
     }
