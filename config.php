@@ -2,7 +2,7 @@
 unset($config);
 $config = new stdClass();
 $config->defaultClass = "Home";
-$config->base_url = '/mvc-mika/app/';
+$config->base_url = '/mvc2018/app/';
 $config->asset = $config->base_url.'view/templates/';
 $config->template = 'default';
 
