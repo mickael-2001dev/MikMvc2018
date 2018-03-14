@@ -135,26 +135,20 @@ class Model
 
     protected function getAllById($table, $id) 
     {
-    	$sql = "SELECT * FROM {$table}";
-    	$results = $this->ExecuteQuery($sql,array());
+    	$sql = "SELECT * FROM {$table} WHERE id = :id";
+    	$results = $this->ExecuteQuery($sql,['id'=>$id]);
     }
 
-    protected function delete($table, $id, $field = null) 
+    protected function delete($table, $id) 
     {
     	$sql = "DELETE FROM {table} WHERE id = :id";
-    	if(isset($field)) {
-    		if($this->ExecuteCommand($sql, [':{$field}'=>$id])){
-    			return true;
-	    	} else {
-	    		return false;
-	    	}	
-    	} else {
-    		if($this->ExecuteCommand($sql, [':id'=>$id])){
-    			return true;
-	    	} else {
-	    		return false;
-	    	}
-    	}
+    	try{
+	    $this->ExecuteCommand($sql, [':id'=>$id]);
+	    $results = true;
+	    throw new Excepetion('Erro no delete!');
+	} catch (Exception $e) {
+	    $results = $e->getMessage();
+	}	
     	
     }
 
