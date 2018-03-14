@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /mvc2018/
+  RewriteBase /mvc2018/app
   RewriteCond $1 !^(index\.php|images|assets|robots\.txt|bootstrap.min.css\.map)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
