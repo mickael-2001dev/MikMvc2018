@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
-use controllers\Error404;
-use controllers\Home;
+use controllers\Error404 as Error404;
+use controllers\Home as Home;
 use controllers\News;
 use views\View;
 /*
@@ -53,12 +53,7 @@ class Controller
                 $method = null;
             }
             $param = (count($this->query) > 2) ? $this->query[2] : null;
-            //$test = new News();
-            //$test->index();
-            //var_dump($test);
-            var_dump($class_name);
             if (class_exists($class_name)) {
-                var_dump($class_name);
                 $class = new $class_name;
 
                 if ($class instanceof Controller) {
@@ -76,7 +71,7 @@ class Controller
                                 $this->view->index(); 
                             }
                         } else {
-                            $class = new Error404();
+                            $class = new Error404;
                             $class->error();
                        }
                     }
@@ -84,7 +79,7 @@ class Controller
             }
         }
         if ($this->query === null) {
-            $class = new Home;
+            $class = new $this->config->defaultClass;
             $class->index();
         } elseif (!$class) {
             $class = new Error404;

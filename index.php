@@ -7,7 +7,7 @@ use controllers\Home;
 use controllers\News;
 use views\View;
 
-function autoLoad($class) {
+function autoLoadWindows($class) {
     $found = false;
     if (file_exists("$class.class.php")) {      
         require_once("$class.class.php");
@@ -16,21 +16,43 @@ function autoLoad($class) {
         require_once("$class.php");
         $found = true;
     } else {
-        $folders = ['models','views','controllers','lib'];
-        foreach ($folders as $folder) {
-            if(file_exists("$folder/$class.php")){
-                require_once("$folder/$class.php");
-                $found = true;
-            } else if(file_exists("$folder/$class.class.php")){
-                require_once("$folder/$class.class.php");
-                $found = true;
-            }
-           
-        }
-        
+        require_once("$class.php");
     }
     return $found;
 }
-spl_autoload_register("autoLoad");
+
+function autoLoadUnix($class) {
+    $found = false;
+    if (file_exists("$class.class.php")) {      
+        require_once(str_replace('\\', '/',"$class.class.php"));
+        $found = true;
+    } elseif (file_exists("$class.php")) {
+        require_once(str_replace('\\', '/',"$class.php"));
+        $found = true;
+    } else {
+        require_once(str_replace('\\', '/',"$class.php"));
+       /** CASO NÃO USE NAMESPACE
+        $folders = getFolders();//Muito lento
+        $folders = ['models','views','controllers','lib'];//Procurar em pastas principais
+       foreach ($folders as $folder) {
+            if (file_exists("$folder/$class.class.php")) {
+                require_once(str_replace('\\', '/',"$folder/$class.class.php"));
+                $found = true;
+                return $found;
+            } elseif (file_exists("$folder/$class.php")) {
+                    require_once(str_replace('\\', '/',"$folder/$class.php"));
+                   $found = true;
+                    return $found; 
+            }
+        }
+        **/
+    }
+    return $found;
+}
+if(stripos("win",$_SERVER["SERVER_SOFTWARE"])){
+    spl_autoload_register("autoLoadWindows");
+}else{
+    spl_autoload_register("autoLoadUnix");
+}
 $controller = new Controller();
 $controller->route(filter_input(INPUT_GET, 'query'));
