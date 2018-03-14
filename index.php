@@ -1,28 +1,47 @@
 <?php  
 error_reporting(E_ALL ^ E_WARNING);
+
 use controllers\Controller;
+use controllers\Error404;
+use controllers\Home;
+use controllers\News;
+use views\View;
+
 function autoLoad($class) {
     $found = false;
-    if (file_exists("$class.class.php")) {
-        include_once "$class.class.php";
+    if (file_exists("$class.class.php")) {      
+        require_once("$class.class.php");
         $found = true;
     } elseif (file_exists("$class.php")) {
-        include_once "$class.php";
+        require_once("$class.php");
         $found = true;
     } else {
-       //$folders = getFolders();//Muito lento
-        $folders = ['models','views','controllers','lib'];//Procurar em pastas principais
+        $folders = ['models','views','controllers','lib'];
         foreach ($folders as $folder) {
+            if(file_exists("$folder/$class.php")){
+                require_once("$folder/$class.php");
+                $found = true;
+            } else if(file_exists("$folder/$class.class.php")){
+                require_once("$folder/$class.class.php");
+                $found = true;
+            }
+           
+        }
+       /**
+        $folders = getFolders();//Muito lento
+        $folders = ['models','views','controllers','lib'];//Procurar em pastas principais
+       foreach ($folders as $folder) {
             if (file_exists("$folder/$class.class.php")) {
-                include_once "$folder/$class.class.php";
+                require_once(str_replace('\\', '/',"$folder/$class.class.php"));
                 $found = true;
                 return $found;
             } elseif (file_exists("$folder/$class.php")) {
-                    include_once "$folder/$class.php";
-                    $found = true;
+                    require_once(str_replace('\\', '/',"$folder/$class.php"));
+                   $found = true;
                     return $found; 
             }
         }
+        **/
     }
     return $found;
 }
