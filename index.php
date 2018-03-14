@@ -27,21 +27,7 @@ function autoLoad($class) {
             }
            
         }
-       /**
-        $folders = getFolders();//Muito lento
-        $folders = ['models','views','controllers','lib'];//Procurar em pastas principais
-       foreach ($folders as $folder) {
-            if (file_exists("$folder/$class.class.php")) {
-                require_once(str_replace('\\', '/',"$folder/$class.class.php"));
-                $found = true;
-                return $found;
-            } elseif (file_exists("$folder/$class.php")) {
-                    require_once(str_replace('\\', '/',"$folder/$class.php"));
-                   $found = true;
-                    return $found; 
-            }
-        }
-        **/
+        
     }
     return $found;
 }
