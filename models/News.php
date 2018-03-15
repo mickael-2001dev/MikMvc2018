@@ -11,7 +11,7 @@ class News extends Model implements InterfaceModel
 	{
 		$news = [];
 		parent::getAll('news');
-		//var_dump($results);
+		
 		foreach ($results as $row) {
 			$news[] = new NewsAbstract(
 				$row['title'],
@@ -27,10 +27,11 @@ class News extends Model implements InterfaceModel
 	public function getAllById($id) 
 	{
 		parent::getAllById('news', $id);
+		
 		$news = new NewsAbstract(
-			$row['title'],
-			$row['article'],
-			$row['id']
+			$results['title'],
+			$results['article'],
+			$results['id']
 		);
 
 		return $news;
