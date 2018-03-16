@@ -3,7 +3,6 @@ namespace models;
 use models\InterfaceModel;
 use \NewsAbstract;
 
-
 class News extends Model implements InterfaceModel
 {
 	
