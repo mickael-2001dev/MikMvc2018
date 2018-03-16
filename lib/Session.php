@@ -1,19 +1,8 @@
 <?php
 namespace lib;
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of SessionLogin
- *
- * @author echoes
- */
 class Session 
 {
-
-    //put your code here
 
     public function __construct() 
     {
@@ -54,4 +43,4 @@ class Session
 
 }
 
-?>
+
