@@ -4,37 +4,17 @@ use controllers\Error404 as Error404;
 use controllers\Home as Home;
 use controllers\News;
 use views\View;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of Controller
- *
- * @author Professor
- */
 class Controller 
 {
 
     protected $config;
     private $query;
-
-    /**
-     * @var View
-     */
     protected $view;
-
-    /**
-     *
-     * @var Model;
-     */
     protected $model;
 
     public function __construct() 
     {
-
         include 'config.php';
         $this->config = $config;
         $this->view = new View();
