@@ -1,20 +1,6 @@
 <?php
 namespace lib;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of Email
- *
- * @author echoes
- */
-
-/**
- * This example shows how to send via Google's Gmail servers using XOAUTH2 authentication.
- */
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\OAuth;
@@ -33,7 +19,6 @@ class Email
 {
 
     //Classe configurada para enviar email através de conta do Google e PHPMailer
-    //put your code here
     private $de = 'mickael.souza.if@gmail.com';
     private $para;
     private $assunto;
