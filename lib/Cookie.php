@@ -1,34 +1,25 @@
 <?php
+<<<<<<< HEAD
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+namespace lib;
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
 
-/**
- * Description of Cookie
- *
- * @author echoes
- */
 class Cookie 
 {
 
     private $time;
 
-    /**
-     * Número de dias para expirar o cookie padrão é 1
-     * @param number $time
-     */
     public function __construct($time = 1) 
     {
         $this->time = time() + $time*86400;
     }
 
-    /**
-     * 
-     * @param Usuario $user
-     */
     public function setCookieUser($user) 
     {
         $this->setCookie('username', $user->getUsername());

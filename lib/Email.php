@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,6 +16,10 @@
 /**
  * This example shows how to send via Google's Gmail servers using XOAUTH2 authentication.
  */
+=======
+namespace lib;
+
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\OAuth;
@@ -33,7 +38,6 @@ class Email
 {
 
     //Classe configurada para enviar email através de conta do Google e PHPMailer
-    //put your code here
     private $de = 'mickael.souza.if@gmail.com';
     private $para;
     private $assunto;

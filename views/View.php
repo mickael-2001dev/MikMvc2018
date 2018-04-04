@@ -25,7 +25,11 @@ class View
         $this->location($this->url);
     }
 
+<<<<<<< HEAD
     public function load($page, $data = null)
+=======
+    public function load($page, $data = null) 
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
     {
         include_once "views/templates/" . $this->template . "/$page.php";
     }

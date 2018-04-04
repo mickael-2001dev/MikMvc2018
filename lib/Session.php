@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 /*
  * To change this template, choose Tools | Templates
@@ -10,10 +11,12 @@
  *
  * @author echoes
  */
+=======
+namespace lib;
+
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
 class Session 
 {
-
-    //put your code here
 
     public function __construct() 
     {
@@ -54,4 +57,4 @@ class Session
 
 }
 
-?>
+

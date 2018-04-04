@@ -1,47 +1,22 @@
 <?php
+<<<<<<< HEAD
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+namespace lib;
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
 
-/**
- * Description of Login
- *
- * @author echoes
- */
 class Login 
 {
 
-    //put your code here
-    /**
-     *
-     * @var bool
-     */
     private $logged;
-    /**
-     *
-     * @var Session
-     */
     private $session;
-
-    /**
-     *
-     * @var Cookie
-     */
     private $cookie;
-
-    /**
-     *
-     * @var Usuario
-     */
     private $user;
-
-    /**
-     *
-     * @var UsuarioModel
-     */
     private $model;
 
     public function __construct() 

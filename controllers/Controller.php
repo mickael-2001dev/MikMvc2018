@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,22 +13,28 @@
  * @author Professor
  */
 class Controller {
+=======
+namespace controllers;
+use controllers\Error404 as Error404;
+use controllers\Home as Home;
+use controllers\News;
+use views\View;
+
+class Controller 
+{
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
 
     protected $config;
     private $query;
-
-    /**
-     * @var View
-     */
     protected $view;
-
-    /**
-     *
-     * @var Model;
-     */
     protected $model;
 
+<<<<<<< HEAD
     public function __construct() {
+=======
+    public function __construct() 
+    {
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
         include 'config.php';
         $this->config = $config;
         $this->view = new View();
@@ -82,6 +89,7 @@ class Controller {
     {
         header('Location: '.$_SERVER['HTTP_REFERER']);
     }
+<<<<<<< HEAD
 
     protected function location($location = null)
     {
@@ -93,3 +101,6 @@ class Controller {
         header('Location: http://localhost/PopCulture/app/'.$location);
     } 
 }
+=======
+}
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3

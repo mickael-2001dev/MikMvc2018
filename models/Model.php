@@ -1,20 +1,20 @@
 <?php
+<<<<<<< HEAD
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+namespace models;
+use \PDO;
+use PDOException;
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3
 
-/**
- * Description of Model
- *
- * @author echoes
- */
 class Model 
 {
-    //put your code here
-   
+  
     private $connectionString;
     private $user;
     private $password;

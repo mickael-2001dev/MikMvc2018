@@ -1,14 +1,23 @@
 <?php  
 
+<<<<<<< HEAD:models/NewsModel.php
 
 class NewsModel extends Model implements InterfaceModel
+=======
+class News extends Model implements InterfaceModel
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3:models/News.php
 {
 	
 	public function getAll()
 	{
 		$news = [];
+<<<<<<< HEAD:models/NewsModel.php
 		$results = parent::getAll('news');
 		//var_dump($results);
+=======
+		parent::getAll('news');
+		
+>>>>>>> b442fadf14c1f68df181f2de4ba066859a8429a3:models/News.php
 		foreach ($results as $row) {
 			$news[] = new NewsAbstract(
 				$row['title'],
@@ -24,10 +33,11 @@ class NewsModel extends Model implements InterfaceModel
 	public function getAllById($id) 
 	{
 		parent::getAllById('news', $id);
+		
 		$news = new NewsAbstract(
-			$row['title'],
-			$row['article'],
-			$row['id']
+			$results['title'],
+			$results['article'],
+			$results['id']
 		);
 
 		return $news;
