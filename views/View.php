@@ -1,13 +1,15 @@
 <?php
-namespace views;
-class View {
+
+class View 
+{
     //put your code here
     private $base_url;
     private $url;
     private $asset;
     private $template;
 
-    public function __construct() {
+    public function __construct() 
+    {
         include 'config.php';
         if ($config) {
             $this->base_url = $config->base_url;
@@ -18,22 +20,26 @@ class View {
         }
     }
     
-    public function index(){
+    public function index()
+    {
         $this->location($this->url);
     }
 
-    public function load($page, $data = null) {
+    public function load($page, $data = null)
+    {
         include_once "views/templates/" . $this->template . "/$page.php";
     }
 
-    public function setTemplate($template) {
+    public function setTemplate($template) 
+    {
         include 'config.php';
         $this->asset = $config->asset;
         $this->template = $template;
          $this->asset.=$this->template . "/";
     }
     
-    public function location($url){
+    public function location($url)
+    {
          header("Location: $url");
     }
 

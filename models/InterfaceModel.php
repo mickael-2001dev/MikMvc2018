@@ -1,5 +1,5 @@
 <?php  
-namespace models;
+
 interface InterfaceModel
 {
 	public function getAll();

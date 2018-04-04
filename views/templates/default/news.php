@@ -1,6 +1,6 @@
 <?php  
 
-var_dump($data['news']);
+
 
 if(isset($data['news'])) {
 	foreach ($data['news'] as $row) {

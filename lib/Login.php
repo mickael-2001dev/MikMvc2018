@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -54,16 +54,64 @@ class Login
 
     public function verifyLogin($user) 
     {
-        $this->user = $this->model->getUserByLogin($user->getLogin());
-        $test = $this->user;
-        var_dump($test);
+        $this->user = $this->model->getUserByLogin($user->getUsername());
+        //$test = $this->user;
+        //var_dump($test);
         if($this->user){
-            if ($this->user->getSenha() == md5($user->getSenha())) {
+            echo $this->user->getPassword().'<br>';
+            echo md5($user->getPassword());
+            if ($this->user->getPassword() == md5($user->getPassword())) {
                 $this->logged = true;
             }
         }
 
         return $this->logged;
+    }
+
+    public function verifyPassword($username) 
+    {
+        $return = false;
+        //var_dump($username);
+        $this->user = $this->model->getUserByLogin($username);
+        //var_dump($this->user);
+
+        $dateUpdate = new DateTime($this->user->getDtupdate());
+        $dateToday = new DateTime();
+        $interval = $dateToday->diff($dateUpdate);
+        $interval = (int) $interval->format('%a');
+
+        if($interval >= 60) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    public function verifyNewPassword($username, $pass)
+    {
+
+        $return = false;
+        $this->user = $this->model->getUserByLogin($username);
+
+        if($this->user->getTempPassword() == $pass) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    public function updatePassword($username, $pass) 
+    {
+        $this->user = $this->model->getUserByLogin($username);
+       
+        return $this->model->updatePassword($pass, $this->user->getId());
+    }
+
+    public function updateTempPassword($username, $pass) 
+    {
+        $this->user = $this->model->getUserByLogin($username);
+        
+        return $this->model->updateTempPassword($pass, $this->user->getId());
     }
 
     public function createSession() 

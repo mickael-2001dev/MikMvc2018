@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,7 +27,7 @@ date_default_timezone_set('Etc/UTC');
 
 //Load dependencies from composer
 //If this causes an error, run 'composer install'
-require 'system/phpmailer/vendor/autoload.php';
+require 'lib/phpmailer/vendor/autoload.php';
 
 class Email 
 {

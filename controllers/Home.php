@@ -1,5 +1,5 @@
 <?php  
-namespace controllers;
+
 class Home extends Controller
 {
 	
@@ -10,6 +10,12 @@ class Home extends Controller
 
 	public function index() 
 	{
-		echo "Bem Vindo a Home!";
+		$data['title'] = "Pop Culture Brasil";
+
+		$this->view->load('header', $data);
+		$this->view->load('nav');
+		$this->view->load('index');
+		$this->view->load('footer');
+
 	}
 }

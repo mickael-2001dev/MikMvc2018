@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,9 +31,9 @@ class Cookie
      */
     public function setCookieUser($user) 
     {
-        $this->setCookie('login', $user->getLogin());
-        $this->setCookie('senha', $user->getSenha());
-        $this->setCookie('nome', $user->getNome());
+        $this->setCookie('username', $user->getUsername());
+        $this->setCookie('password', $user->getPassword());
+        $this->setCookie('email', $user->getEmail());
     }
 
     public function setCookieUserJson($user) 
@@ -44,11 +44,11 @@ class Cookie
     public function getCookieUser() 
     {
         if ($this->isCookieExist()) {
-            $nome = filter_input(INPUT_COOKIE, 'nome');
-            $login = filter_input(INPUT_COOKIE, 'login');
-            $senha = filter_input(INPUT_COOKIE, 'senha');
+            $username = filter_input(INPUT_COOKIE, 'username');
+            $email = filter_input(INPUT_COOKIE, 'email');
+            $password = filter_input(INPUT_COOKIE, 'password');
             if ($nome && $login && $senha)
-                return new Usuario($login,$senha,$nome);
+                return new User($username,$password,$email);
             else
                 return false;
         }else {
@@ -59,7 +59,7 @@ class Cookie
     public function getCookieUserJson() 
     {
         if ($this->isCookieExist()) {
-            $login = filter_input(INPUT_COOKIE, 'login');
+            $login = filter_input(INPUT_COOKIE, 'username');
             if ($login) {
                 $user = json_decode($login);
                 if (is_a($user, 'Usuario')) {
@@ -86,15 +86,15 @@ class Cookie
         return filter_input(INPUT_COOKIE, $nome);
     }
 
-    public function isCookieExist($login = 'login') 
+    public function isCookieExist($login = 'username') 
     {
          return (filter_input(INPUT_COOKIE,$login))?true:false; 
     }
 
     public function destroyCookie() 
     {        
-        setcookie('login', null, -1,'/');
-        setcookie('senha', null, -1,'/');
-        setcookie('nome', null, -1,'/');
+        setcookie('username', null, -1,'/');
+        setcookie('password', null, -1,'/');
+        setcookie('email', null, -1,'/');
     }
 }

@@ -1,5 +1,5 @@
 <?php  
-namespace controllers;
+
 class Error404 extends Controller
 {
 	

@@ -1,16 +1,13 @@
 <?php  
-namespace models;
-use models\InterfaceModel;
-use \NewsAbstract;
 
 
-class News extends Model implements InterfaceModel
+class NewsModel extends Model implements InterfaceModel
 {
 	
 	public function getAll()
 	{
 		$news = [];
-		parent::getAll('news');
+		$results = parent::getAll('news');
 		//var_dump($results);
 		foreach ($results as $row) {
 			$news[] = new NewsAbstract(

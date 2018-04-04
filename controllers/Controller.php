@@ -1,9 +1,5 @@
 <?php
-namespace controllers;
-use controllers\Error404 as Error404;
-use controllers\Home as Home;
-use controllers\News;
-use views\View;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +11,7 @@ use views\View;
  *
  * @author Professor
  */
-class Controller 
-{
+class Controller {
 
     protected $config;
     private $query;
@@ -32,16 +27,13 @@ class Controller
      */
     protected $model;
 
-    public function __construct() 
-    {
-
+    public function __construct() {
         include 'config.php';
         $this->config = $config;
         $this->view = new View();
     }
 
-    public function route($query = null) 
-    {
+    public function route($query = null) {
         $class = null;
         $this->query = $query;
         if ($this->query) {
@@ -55,7 +47,6 @@ class Controller
             $param = (count($this->query) > 2) ? $this->query[2] : null;
             if (class_exists($class_name)) {
                 $class = new $class_name;
-
                 if ($class instanceof Controller) {
                     if (method_exists($class, $method)) {
                         if ($param) {
@@ -71,7 +62,7 @@ class Controller
                                 $this->view->index(); 
                             }
                         } else {
-                            $class = new Error404;
+                            $class = new Error404();
                             $class->error();
                        }
                     }
@@ -82,13 +73,23 @@ class Controller
             $class = new $this->config->defaultClass;
             $class->index();
         } elseif (!$class) {
-            $class = new Error404;
-            $class->error();			
+            $class = new Error404();
+            $class->error();            
         }
     }
     
-    public function reload()
+    protected function reload()
     {
         header('Location: '.$_SERVER['HTTP_REFERER']);
     }
+
+    protected function location($location = null)
+    {
+
+        if($location == null) {
+            $location = 'Admin';
+        }
+
+        header('Location: http://localhost/PopCulture/app/'.$location);
+    } 
 }

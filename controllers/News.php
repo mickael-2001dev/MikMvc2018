@@ -1,6 +1,4 @@
 <?php  
-namespace controllers;
-use models\News as NewsModel;
 
 class News extends Controller
 {
